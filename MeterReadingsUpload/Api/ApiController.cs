@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 namespace MeterReadingsUpload.Api
 {
     [ApiController]
-    [Route("api")]
     public class ApiController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -20,7 +19,8 @@ namespace MeterReadingsUpload.Api
         }
 
 
-        [HttpPost("uploadreadings")]
+        [HttpPost]
+        [Route("meter-reading-uploads")]
         public async Task<IActionResult> UploadReadings(IFormFile file)
         {
             try
