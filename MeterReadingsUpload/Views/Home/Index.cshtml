@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Upload";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h2>
+                    Upload your Meter Readings
+                </h2>
+                <p>
+                    Please use a csv format
+                </p>
+            </div>
+            @using (Html.BeginForm("UploadReadings",
+                               "Home",
+                               FormMethod.Post,
+                               new { enctype = "multipart/form-data", role = "form" }))
+            {
+                <div class="form-group">
+                    <label for="file">Upload File:</label>
+                    <input type="file" class="form-control-file" name="file" id="file" />
+                </div>
+                <input type="submit" value="Upload" />
+            }
+            @if (!String.IsNullOrEmpty(ViewBag.Message))
+            {
+                <br />
+                <div class="alert alert-primary" role="alert">
+                    @ViewBag.Message
+                </div>
+            }
+        </div>
+    </div>
+</div>
